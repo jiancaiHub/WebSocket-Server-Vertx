@@ -1,0 +1,8 @@
+{
+  "zookeeperHosts":"192.168.5.5",
+  "rootPath":"io.vertx",
+  "retry":{
+    "initialSleepTime":3000,
+    "maxTimes":3
+  }
+}
