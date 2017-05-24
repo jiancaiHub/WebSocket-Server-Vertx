@@ -22,7 +22,7 @@ public class AccessHandler {
 
     public void handle(RoutingContext routingContext) {
         // get topic form request
-        String topic = routingContext.pathParam(Constants.DEFAULT_TOPIC_KEY);
+        String topic = routingContext.request().getParam(Constants.DEFAULT_TOPIC_KEY);
         topic = Objects.isNull(topic) ? Constants.DEFAULT_TOPIC : topic;
 
         Producer producer = new Producer(vertx, routingContext.request().upgrade(), topic);

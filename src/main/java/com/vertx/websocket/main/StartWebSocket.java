@@ -12,6 +12,8 @@ import io.vertx.spi.cluster.zookeeper.ZookeeperClusterManager;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import static com.vertx.websocket.server.util.PropertiesUtil.loadProperties;
+
 
 /**
  * Created by jiancai.wang on 2017/4/19.
@@ -19,12 +21,13 @@ import org.slf4j.LoggerFactory;
 public class StartWebSocket {
 
     private static final Logger log = LoggerFactory.getLogger(StartWebSocket.class);
+    private static final String DEFAULT_CONFIG_RES = "configs/default-websocket.json";
 
     public static void main(String[] args) {
 
 
-        // some init params
-        JsonObject conf = new JsonObject();
+        // load config
+        JsonObject conf = loadProperties(DEFAULT_CONFIG_RES);
 
         ClusterManager clusterManager = new ZookeeperClusterManager();
         VertxOptions options = new VertxOptions()

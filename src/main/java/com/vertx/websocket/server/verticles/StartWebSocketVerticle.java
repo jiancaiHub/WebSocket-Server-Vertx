@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Objects;
 
+import static com.vertx.websocket.server.util.PropertiesUtil.loadProperties;
+
 /**
  * Created by jiancai.wang on 2017/5/10.
  */
@@ -36,20 +38,4 @@ public class StartWebSocketVerticle extends AbstractVerticle {
         vertx.deployVerticle(HeartbeatVerticle.class.getName(), deploymentOptions);
     }
 
-
-    private static JsonObject loadProperties(String resourceLocation) {
-        JsonObject properties = new JsonObject();
-        try {
-            InputStream in = ClassLoader.getSystemResourceAsStream(resourceLocation);
-            byte[] bytes = new byte[in.available()];
-            in.read(bytes);
-            properties = new JsonObject(new String(bytes));
-            log.info("Loaded websocket.json file from resourceLocation=" + resourceLocation);
-        } catch (FileNotFoundException e) {
-            log.error("Could not find websocket config file", e);
-        } catch (IOException e) {
-            log.error("Failed to load websocket config", e);
-        }
-        return properties;
-    }
 }
