@@ -10,6 +10,5 @@
 * serverPort：服务端口
 * remoteHost：心跳服务器地址
 * remotePort：心跳服务器端口
-4. 
-  java -jar Console-WebSocket-1.0-fat.jar -cluster 
-  java -cp Cosole-WebSocket.1.0-fat.jar: io.vertx.core.Launcher run "com.vertx.websocket.server.verticles.StartWebSocketVerticle" -cluster
+4. java -jar Console-WebSocket-1.0-fat.jar -cluster 
+5. java -cp Cosole-WebSocket.1.0-fat.jar: io.vertx.core.Launcher run "com.vertx.websocket.server.verticles.StartWebSocketVerticle" -cluster
