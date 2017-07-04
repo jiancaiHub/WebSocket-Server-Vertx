@@ -1,12 +1,15 @@
 package com.vertx.websocket.server.handler;
 
 
+
 import com.vertx.websocket.server.common.Constants;
 import com.vertx.websocket.server.common.Producer;
 import io.vertx.core.Vertx;
 import io.vertx.ext.web.RoutingContext;
 
 import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 
 /**
@@ -22,10 +25,10 @@ public class AccessHandler {
 
     public void handle(RoutingContext routingContext) {
         // get topic form request
-        String topic = routingContext.request().getParam(Constants.DEFAULT_TOPIC_KEY);
-        topic = Objects.isNull(topic) ? Constants.DEFAULT_TOPIC : topic;
+        String topicInfo = routingContext.request().getParam(Constants.DEFAULT_TOPIC_KEY);
+        String[] topicArray = Objects.isNull(topicInfo) ? Constants.DEFAULT_TOPIC_LIST : topicInfo.trim().split(",");
 
-        Producer producer = new Producer(vertx, routingContext.request().upgrade(), topic);
+        Producer producer = new Producer(vertx, routingContext.request().upgrade(), Stream.of(topicArray).collect(Collectors.toList()));
         producer.onOpen().access();
     }
 
