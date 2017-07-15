@@ -8,16 +8,14 @@ import java.util.Map;
  */
 public class UrlPathUtil {
 
-    public static Map<String, String> paresParams(String uri) {
+    public static Map<String, String> paresParams(String query) {
         Map<String, String> params = new HashMap<>();
-        if (uri.indexOf("&") > -1) {
-            String[] paths = uri.substring(uri.indexOf("?") + 1, uri.length()).split("&");
-            for (String path : paths) {
-                String[] pars = path.split("=");
-                params.put(pars[0], pars[1]);
-            }
+        String[] paths = query.split("&");
+        for (String path : paths) {
+            String[] pars = path.split("=");
+            params.put(pars[0], pars[1]);
         }
         return params;
-
     }
+
 }

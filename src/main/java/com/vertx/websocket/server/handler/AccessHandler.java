@@ -1,7 +1,6 @@
 package com.vertx.websocket.server.handler;
 
 
-
 import com.vertx.websocket.server.common.Constants;
 import com.vertx.websocket.server.common.Producer;
 import io.vertx.core.Vertx;

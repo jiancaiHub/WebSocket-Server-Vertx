@@ -21,7 +21,7 @@ public class MonitorHandler {
 
     public void handle(RoutingContext routingContext) {
         // get topic form request
-        Map<String, String> params = UrlPathUtil.paresParams(routingContext.request().uri());
+        Map<String, String> params = UrlPathUtil.paresParams(routingContext.request().query());
         // get topic and rm the
         String topic = params.getOrDefault(Constants.DEFAULT_TOPIC_KEY, Constants.DEFAULT_TOPIC);
         if (params.containsKey(Constants.DEFAULT_TOPIC_KEY)) params.remove(Constants.DEFAULT_TOPIC_KEY);

@@ -1,5 +1,5 @@
 {
-  "zookeeperHosts":"192.168.5.5",
+  "zookeeperHosts":"localhost",
   "rootPath":"io.vertx",
   "retry":{
     "initialSleepTime":3000,
